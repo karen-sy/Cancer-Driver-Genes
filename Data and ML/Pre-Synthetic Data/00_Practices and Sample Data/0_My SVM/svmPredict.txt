@@ -1,0 +1,26 @@
+function pred = svmPredict(model_0.model_1,model_2, X)
+% to return the 'final verdict' on type of mutation
+
+% Data 
+m = size(X, 1);
+p = zeros(m, 1);
+pred = zeros(m, 3); %m by 3; [0 0 1] would mean gene is tsg
+
+%linear kernel
+p_0 = X * model_0.w + model_0.b; %yeah add that to stuff
+p_1 = X * model_1.w + model_1.b;
+p_2 = X * model_2.w + model_2.b;
+
+% Convert predictions into 0 / 1
+pred(p_0 >= 0 , 1) =  1;
+pred(p_0 <  0 , 1) =  0;
+
+pred(p_1 >= 0 , 2) =  1;
+pred(p_1 <  0 , 2) =  0;
+
+pred(p_2 >= 0 , 3) =  1;
+pred(p_2 <  0 , 3) =  0;
+ 
+
+end
+

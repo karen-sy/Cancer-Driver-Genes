@@ -1,0 +1,12 @@
+Load in the "correct" genome and use that to generate the new maf.
+To start don't worry about finding contexts of the mutations or indels. You can just do random snv mutations. 
+
+
+
+So if the MAF file says that a C changed to a T randomly find another C in the "correct" gene sequence from the genome and change it to a T. 
+Then use nt2aa to find what the new codon sequence is. 
+If the new codon sequence matches the "correct" codon sequence it is a silent mutation, if it gives a stop then it is nonsense, otherwise it is a missense. 
+You can also get the protein change from this. 
+Do this for every mutation in the maf file and that counts as 1 permutation. 
+
+This uses the same genome and driver genes that I sent in the previous email so use that genome as the "Correct" genome.

@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{natbib}
+\begin{document}
+
+
+for
+
+\begin{equation}
+O_2(m,n) = \frac{v_o}{a_o + (m+n)(c_1 - \frac{c_1-c_2}{1+(\frac{5000}{n})^ {10}})}
+\end{equation} \newline \newline
+\begin{equation}
+D(O_2) = \frac{D_{max}}{1 + (\frac{O_2}{O_{2_{max}} - O_{2_{thresh}}})^5}
+\end{equation} \newline \newline
+\begin{equation}
+L(O_2) = 1- \frac{O_{2_{max}} - O_2}{O_{2_{thresh}}}
+\end{equation}\newline  \newline
+
+and 
+
+\begin{align*}
+ \mu &= \mu_t + \mu_o \\
+ p_n &= (1-\mu)^2 \\
+ p_s &= 2\mu (1-\mu) \\
+\end{align*} 
+
+
+We have \\
+
+\begin{equation}
+\frac{dN}{dt} = v_N N ((p_n-p_s) - d_N) (L(O_2)) - D(O_2) N 
+\end{equation} \newline \newline
+\begin{equation}
+\frac{dM}{dt} = (v_M - d_M) M (L(O_2)) +  v_N N (2 p_s + p_a) (L(O_2)) - D(O_2) M - sIM 
+\end{equation} \newline \newline
+\begin{equation}
+\frac{dI}{dt} = v_I I (1 - \frac{I}{I_H + r IM}) - d_I I  
+\end{equation}\newline  \newline
+  
+
+Driver Feedbacks to Cancer:
+\begin{equation}
+d_M = (\frac{d_M}{1 + \frac{\mu_t}{\mu} \alpha_d M}) %feedback to death rate from tsg's
+\end{equation} \newline
+\begin{equation}
+v_M = v_M + v_M (\frac{\alpha_v}{1 + \frac{\mu_o}{\mu} M})
+\end{equation} \newline
+ 
+
+
+Driver Feedbacks to Immune system:
+\begin{equation}
+s = \frac{s}{1+(\frac{M}{\beta_s})^5)} %''insensitive'' = some constant
+\end{equation} \newline
+\begin{equation}
+r = \frac{R} {1+(\frac{M}{\beta_r})^5)}%E = some constant
+\end{equation} \newline
+
+\begin{equation}
+d_i = \frac{d_{i_{max}}} {1+ (\frac{7500}{M})}%E = some constant
+\end{equation} \newline
+ 
+
+\end{document}

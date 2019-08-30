@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{natbib}
+\begin{document}
+
+Final equations:
+\begin{equation}
+\frac{dN}{dt} = rN ( (\gamma_1 - \delta_1) (1- (\frac{\frac{v_3}{a_3} -O_2(N,M)}{cp})) - p_3) %gamma1+p2+p3 = 1
+\end{equation}
+\begin{equation}
+\frac{dM}{dt} = rM ( (\gamma_2 - \delta_2) (1- (\frac{\frac{v_3}{a_3} - O_2(N,M)}{cp}))) + r N (2 p_3 +p_2) - M s I 
+\end{equation}
+\begin{equation}
+\frac{dI}{dt} = r_i M (1 - \frac{I}{I_H + Recruit M I}) 
+\end{equation}
+
+ 
+
+Driver Feedbacks to Cancer:
+\begin{equation}
+\delta_2 = \delta_2 (\frac{1}{1 + \frac{d_t}{mut}} M Feedback_\delta) %feedback to death rate from tsg's
+\end{equation}
+\begin{equation}
+\gamma_2 = \gamma_2 + \gamma_2  (\frac{MaxGammaAdd}{1 + \frac{\frac{d_o}{mut} M}{Feedback_\gamma}})
+\end{equation}
+ 
+
+Driver Feedbacks to Immune system:
+\begin{equation}
+S = S \frac{1}{1+M Insensitive} %''insensitive'' = some constant
+\end{equation}
+\begin{equation}
+Recruit = Recruit \frac{1} {1+EM}%E = some constant
+\end{equation}
+ 
+
+
+
+
+
+
+\end{document}

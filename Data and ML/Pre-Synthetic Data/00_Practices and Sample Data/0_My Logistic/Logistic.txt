@@ -1,0 +1,109 @@
+
+% using mutation file (~19000 genes);
+% .bed file is for oncogene criteria
+% features to feed: nine as above
+
+%% logistic regression: Initialize
+clear; close all; clc
+
+%% Load Data
+% Training set (60%), Cross-Validation set (20% of the original data set), Test set (20% of the original data set)
+load ('mutfile.mat'); %will predict on this set
+load ('OncogeneList.mat'); load ('TSGList.mat'); % OncogeneList, TSGList from 20/20 classification
+
+%% Create Features
+% all Nx1 arrays, where N is # of unique gene names
+
+load 20_20_Data.mat;
+
+SilFrac = SilentCount./MutationCount; %1. silent fraction
+NonFrac = NonsenseCount./MutationCount; %2. nonsense fraction
+SplFrac = SpliceCount./MutationCount; %3. splice site fraction 
+MisFrac = MissenseCount./MutationCount; %4. missense fraction
+R_MisFrac = R_MissenseCount./MutationCount; %5. recurrent missense fraction
+IndelFrac = IndelCount./MutationCount; %6.frameshift indel fraction
+In_IndFrac = InframeCount./MutationCount; %7. Inframe indel fraction
+MisToSil =  MissenseCount./(SilentCount+1); %8. missense to silent (pseudo count added to silent to avoid divide by 0)
+NonSilToSil = (MutationCount-SilentCount)./(SilentCount+1); % 9. non-silent to silent ratio (pseudo count added)
+
+X = [SilFrac NonFrac SplFrac MisFrac R_MisFrac IndelFrac In_IndFrac MisToSil NonSilToSil]; %feature vector
+y0 = ~ismember(U_GeneName,[OncogeneList; TSGList]); %passenger mutations (logicals to index into mutations.mat)
+y1 = ismember(U_GeneName,OncogeneList); %oncogenes
+y2 = ismember(U_GeneName,TSGList);   %TSGs 
+
+%% Classifier 1: Passenger or Not? 
+% 1) Cost and Gradient
+
+%setup of data matrix; ones added for intercept terms
+[m, n] = size(X); 
+X = [ones(m,1) X];
+
+%initialize fitting parameters
+initial_theta = zeros(n + 1, 1);
+
+%compute initial cost and gradient
+[cost_0,grad_0] = costFcn(initial_theta, X, y0); 
+
+fprintf('\nCost at test theta: %f\n', cost_0);
+fprintf('Gradient at test theta: \n');
+fprintf(' %f \n', grad_0);
+
+% 2) Optimize
+options = optimoptions(@fminunc,'SpecifyObjectiveGradient', true); %gradient: costfcn must return the gradient vector g(x) in the second output argument.
+
+[theta_0, cost_0] = fminunc(@(t)(costFcn(t, X, y0)), initial_theta, options);
+
+
+fprintf('Cost at theta found by fminunc: %f\n', cost_0);
+fprintf('theta: \n');
+fprintf(' %f \n', theta_0);
+p = predict(theta_0, X);
+
+
+%%  Classifier 2: Oncogene or Not? 
+% 1) Cost and Gradient
+
+%initialize fitting parameters
+initial_theta = zeros(n + 1, 1);
+
+%compute initial cost and gradient
+[cost_1,grad_1] = costFcn(initial_theta, X, y1); 
+
+fprintf('\nCost at test theta: %f\n', cost_1);
+fprintf('Gradient at test theta: \n');
+fprintf(' %f \n', grad_1);
+
+% 2) Optimize
+options = optimoptions(@fminunc,'SpecifyObjectiveGradient', true); %gradient: costfcn must return the gradient vector g(x) in the second output argument.
+
+[theta_1, cost_1] = fminunc(@(t)(costFcn(t, X, y1)), initial_theta, options);
+
+
+fprintf('Cost at theta found by fminunc: %f\n', cost_1);
+fprintf('theta: \n');
+fprintf(' %f \n', theta_1);
+
+
+
+%% Classifier 3: TSG or Not? 
+% 1) Cost and Gradient
+
+%initialize fitting parameters
+initial_theta = zeros(n + 1, 1);
+
+%compute initial cost and gradient
+[cost_2,grad_2] = costFcn(initial_theta, X, y2); 
+
+fprintf('\nCost at test theta: %f\n', cost_2);
+fprintf('Gradient at test theta: \n');
+fprintf(' %f \n', grad_2);
+
+
+% 2) Optimize
+options = optimoptions(@fminunc,'SpecifyObjectiveGradient', true); %gradient: costfcn must return the gradient vector g(x) in the second output argument.
+[theta_2, cost_2] = fminunc(@(t)(costFcn(t, X, y2)), initial_theta, options);
+
+fprintf('Cost at theta found by fminunc: %f\n', cost_2);
+fprintf('theta: \n');
+fprintf(' %f \n', theta_2);
+

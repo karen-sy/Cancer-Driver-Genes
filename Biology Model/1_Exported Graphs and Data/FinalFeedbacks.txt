@@ -1,0 +1,68 @@
+ 
+%% 1) Driver Effects on Cancer
+%f_d = 0.01; %feedback to death rate, from TSGs
+%dm = dm/(1 + (mu_t/mut)*x(2)*f_d);
+%f_max = 0.02; %maximum additional growth rate feedback can add to v
+%f_v = 25; %lower = better for cancer
+%vm = vm + vm*(f_max / (1 + (mu_o/mut)*x(2)/f_v)); %more x2 = more v2
+
+
+%% 1b) Driver Effects on Immune Response
+Ls = 5; %loss of sensitivity
+E = 1; %higher is 'better' for cancer
+S = S*(1/(1 + x(2)*Ls)); % sensitivity to immune predation; "s"
+R = R*(1/(1 + x(2)*E)); %less 'recruitmetn'
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%TO ADD TO IMMUNE STUFF%%%%%%%%%%%%%%%%%%%%
+1) Information
+
+[immune escape] : regulate the cytokine/chemokine network, control the
+recruitment of regulatory cells, modify the expression of receptors
+for factors promoting tumor growth or release of vesicular bodies
+which carry tumor-derived ‘‘molecular messages” throughout the
+host system.
+
+    (a) Regulatory T cells (Treg) are phenotypically defined as
+CD4+CD25highFOXP3+ lymphocytes. Their function is to mediate suppression of 
+effector T cells. They accumulate at tumor sites8, presumably in order to 
+suppress anti-tumor immune responses. Treg are important in mediating 
+inflammatory processes associated with cancer growth and cancer therapy. 
+Whether the Treg-mediated regulation of inflammatory responses in cancer 
+promotes or inhibits antitumor immunity is thus questionable.  ---> IN CODE: suppress 'recruitment'
+
+    (b) Similar to Treg, myeloid-derived suppressor cells (MDSC) 
+also accumulate in the tumor microenvironment and suppress T-cell responses.
+MDSC are bone marrow-derived immature myeloid cells that are increased in
+frequency in the peripheral circulation, lymphoid organs and tumors of 
+virtually all tumor-bearing hosts. They are recruited by tumor-derived 
+soluble factors. These pro-inflammatory mediators induce tissue 
+accumulations of MDSC and increase their suppressor activity thus favoring tumor growth. ---> IN CODE: suppress 'recruitment'
+
+    (c) Tumor-induced apoptosis of activated T lymphocytes is yet another 
+strategy used by tumors to escape from the host immune system. 
+Tumors not only effectively escape from immune intervention by suppressing 
+functions of T cells but also by actively inducing their apoptosis.
+It has been reported that up to 90% of tumor-infiltrating 
+T lymphocytes and substantial proportions of circulating CD8+ T cells 
+in patients with cancer are undergoing apoptosis. Tumor-derived MV arrest
+proliferation of activated T cells, down-regulate expression of 
+TCR-associated zeta chain and Jak3 in T cells and, because they 
+express FasL and/or TRAIL, induce apoptosis of activated T cells.
+Thus, tumor-derived MV, but not MV derived from DC or T cells, 
+can mediate a coordinated insult to cellular immunity, on the one hand
+eliminating activated FasL+ T cells and on the other, supporting the expansion of Treg. 
+Chronic inflammation promotes tumor growth by establishing an immunosuppressive
+environment, blocking anti-tumor immunity and allowing the outgrowth of malignant cells.  ---> IN CODE: Death of immune cells (subtract from ode in terms of cancer #)
+
+    (d) from other paper: tumors which lose MHC expression or acquire defects 
+in antigen presentation may escape immune-mediated elimination by tumor-specific T cells.
+....Leukocyte infiltration into tumor tissue and recognition of malignant 
+cells is necessary for successful immune mediated elimination. Loss of 
+antigenicity can arise due to the immune selection of cancer cells which 
+lack or mutate immunogenic tumor antigens as well as through the 
+acquisition of defects or deficiencies in antigen presentation (e.g. loss of
+major histocompatibility (MHC) expression or dysregulation of antigen processing machinery) --> IN CODE: less 'sensitivity', or eliminate that param and merge this info into 'recruitment'

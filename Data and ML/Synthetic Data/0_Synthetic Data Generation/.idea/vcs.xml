@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/src/github.com/GoesToEleven/GolangTraining" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/GoesToEleven/go-programming" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/GoesToEleven/golang-web-dev" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/karen-sy/forexample" vcs="Git" />
+  </component>
+</project>
