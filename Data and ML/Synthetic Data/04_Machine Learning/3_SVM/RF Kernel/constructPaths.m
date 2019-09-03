@@ -7,7 +7,7 @@ function allPaths = constructPaths(mdl)
 %% setup
 clc; clearvars -except mdl;
 loadXY;
-X = SyntheticX; %may change to consensusx,y
+X = SyntheticX;  
 
 %% construct all gene paths in all trees
 allPaths = struct();
