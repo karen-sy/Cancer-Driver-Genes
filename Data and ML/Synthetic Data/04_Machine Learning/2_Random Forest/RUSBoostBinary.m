@@ -94,6 +94,6 @@ figure(2)
 ConfusionPlot(confusionmat(validationResponse,validationPredictions));
 [pre rec score] = (fScore(confusionmat(validationResponse,validationPredictions)))
 
- 
+%edit 
 end
 
