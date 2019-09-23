@@ -52,11 +52,12 @@ minLambda = find(ce == min(ce));
 t = templateLinear('Learner','logistic',...
     'Lambda',Lambda(minLambda(1)));
  
-ModelFinal = fitcecoc(X(1:7500,:),y(1:7500),'Learners',t,'Cost',cost);
+ModelFinal = fitcecoc(X(1:9500,:),y(1:9500),'Learners',t,'Cost',cost);
 %To estimate labels for new observations, pass MdlFinal and the new data to predict.
 
 % predict 
-predicted = predict(ModelFinal,X(7500:end,:));
+[predicted,score] = predict(ModelFinal,X(500:end,:));
+[X,Y,T,AUC] = perfcurve(y(500:end), score(:,1),1); plot(X,Y); %AUC for pasenger
 
 % Check accuracy
 %confusion matrix

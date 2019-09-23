@@ -2,6 +2,11 @@ function classifykmeans(data)
 %% Classifykmeans.m
 % classifykmeans.m performs a simple k-means classification. 
 
+
+%% probably no need to use because cannot transfer learn
+% so limit to supervised learning algorithms.
+
+%%
 % subsampling
 %subsampling approach, in which passenger genes are sampled at a 1:1 ratio to OGs plus TSGs
 X = data(:,1:end-1);
@@ -24,6 +29,7 @@ ylabel 'Cluster'
 
 silvals = silhouette(X,idx3,'cityblock');
 silhvals_avg = mean(silvals); %mean silihouette vals
+
 
 % save
 figure
