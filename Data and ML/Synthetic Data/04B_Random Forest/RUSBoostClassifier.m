@@ -67,21 +67,7 @@ title("validation set");
 %save RUSresults.mat validationResult validationReferenceResult fullResult fullReferenceResult
 
 %% plot ensemble quality
-figure;
-
-%on **TCGA**: test set
-loadXY; 
-plot(loss(classificationEnsemble,ConsensusX,ConsensusY,'mode','cumulative'),'LineWidth',5);
-
-%on subset of **synthetic** data: validation set
-hold on;
-plot(loss(classificationEnsemble,validationPredictors,validationResponse,'mode','cumulative'),'r','LineWidth',5);
-hold off;
-xlabel('Number of trees');
-ylabel('Classification error');
-legend('Test','Cross-validation','Location','NE');
-set(gca,'FontSize',12,'FontName', 'Times New Roman');
-% export_fig -r300 -transparent RUSensembleQuality.png;
+FIGURE_Rusboost_EnsembleQuality (classificationEnsemble, ConsensusX, ConsensusY, validationPredictors, validationResponse)
 
 end
 
