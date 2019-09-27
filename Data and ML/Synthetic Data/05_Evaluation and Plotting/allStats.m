@@ -74,9 +74,9 @@ classdef allStats
             %Build Confusion matrix
             %Set variables
             class_list=un_actual;
-            disp('Class List in given sample')
-            disp(class_list)
-            fprintf('\nTotal Instance = %d\n',length(actual));
+            %disp('Class List in given sample')
+            %disp(class_list)
+            %fprintf('\nTotal Instance = %d\n',length(actual));
             n_class=length(un_actual);
             c_matrix=zeros(n_class);
             predict_class=cell(1,n_class);
@@ -91,13 +91,13 @@ classdef allStats
                     predict_class{i,j}=sum(val);
                 end
                 row_name{i}=strcat('Actual_class',num2str(i));
-                disp(class_ref{i})
+            %    disp(class_ref{i})
             end
             
             c_matrix_table=cell2table(predict_class);
             c_matrix_table.Properties.RowNames=row_name;
-            disp('Confusion Matrix')
-            disp(c_matrix_table)
+            %disp('Confusion Matrix')
+            %disp(c_matrix_table)
             [Result,RefereceResult]=allStats.getValues(c_matrix);
             %Output Struct for individual Classes
             RefereceResult.Class=class_ref;
@@ -247,7 +247,6 @@ classdef allStats
             Result.MatthewsCorrelationCoefficient=mean(MCC);
             Result.Kappa=kappa_overall;
             
-        end
-        
+        end  
     end
 end
