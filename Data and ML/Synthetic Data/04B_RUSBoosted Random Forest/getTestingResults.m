@@ -8,16 +8,17 @@ loadXY;
 
 %% accuracy / error / recall / precision / f-score / MCC / kappa
 Y = ConsensusY;
-predictedY = trainedClassifier.predictFcn(ConsensusX);
+[predictedY, ~] = trainedClassifier.predictFcn(ConsensusX);
 
 %convert to binary classification for now
-Y(Y ~= 1) = 2; 
-predictedY(predictedY ~= 1) = 2;
- 
-[TCGAfullResult, ~] = runAllStats(Y,predictedY);
+Y = makeBinary(Y); predictedY = makeBinary(predictedY);
+  
+[TCGAfullResult, TCGAfullReferenceResult] = runAllStats(Y,predictedY);
 
 TCGAfullResult.p_value = 1 - Hypergeometric_pvalue(Y, predictedY);
 
+save predictedY.mat predictedY  
+save TCGAfullReferenceResult.mat TCGAfullReferenceResult
 save TCGAresultsRUS.mat TCGAfullResult  
 
 end

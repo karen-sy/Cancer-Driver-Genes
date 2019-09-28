@@ -51,7 +51,7 @@ validationPredictFcn = @(x) treePredictFcn(x);
 %% Compute validation predictions
 validationPredictors = predictors(cvp.test, :);
 validationResponse = response(cvp.test, :);
-[validationPredictions, validationScores] = validationPredictFcn(validationPredictors);
+[validationPredictions, ~] = validationPredictFcn(validationPredictors);
 
 % Compute validation accuracy
 correctPredictions = (validationPredictions == validationResponse);
@@ -61,8 +61,8 @@ validationAccuracy = sum(correctPredictions)/length(correctPredictions);
 
 %% display results
 figure;
-ConfusionPlot(confusionmat(validationResponse,validationPredictions)); title('tree');
-[treeResult,treeReferenceResult] = runAllStats(validationResponse,validationPredictions);
+%ConfusionPlot(confusionmat(validationResponse,validationPredictions)); title('tree');
+[treeResult,treeReferenceResult] = runAllStats(makeBinary(validationResponse),makeBinary(validationPredictions));
     save treeResults.mat treeResult treeReferenceResult
 
 end

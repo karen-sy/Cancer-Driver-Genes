@@ -33,5 +33,6 @@ silhvals_avg = mean(silvals); %mean silihouette vals
 
 % save
 figure
-[kmeansResult,kmeansReferenceResult] = runAllStats(y,idx3);
+[kmeansResult,kmeansReferenceResult] = runAllStats(makeBinary(y),makeBinary(idx3));
+%[kmeansResult,kmeansReferenceResult] = runAllStats(y,idx3);
     save kmeansResults.mat kmeansResult kmeansReferenceResult

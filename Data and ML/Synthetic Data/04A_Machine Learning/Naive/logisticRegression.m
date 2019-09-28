@@ -22,8 +22,6 @@ p = sum(y == 1);
 og = sum(y == 2);
 tsg = sum(y == 3);
 
-%cost = [0, 1+(og/p), 1+tsg/p; 1+p/og, 0, 1+tsg/og; 1+p/tsg, 1+og/tsg,0]; %editedcost.png inverse of frequency
-cost = 1-[1 0 0; 0 1 0 ; 0 0 1];
 
 % train 
 %For each regularization strength, train a classification model 
@@ -57,17 +55,18 @@ ModelFinal = fitcecoc(X(1:9500,:),y(1:9500),'Learners',t,'Cost',cost);
 
 % predict 
 [predicted,score] = predict(ModelFinal,X(500:end,:));
-[X,Y,T,AUC] = perfcurve(y(500:end), score(:,1),1); plot(X,Y); %AUC for pasenger
+ 
 
 % Check accuracy
 %confusion matrix
 g1 = y(7500:end); 
-g2 = predicted;%predicted
-C = confusionmat(g1,g2);
+g2 = predicted; 
+%C = confusionmat(g1,g2);
 
 figure;
 ConfusionPlot(C); title('LR'); %plot confusion matrix 
-[LRegResult,LRegReferenceResult] = runAllStats(g1,g2); %get all stats values
+%[LRegResult,LRegReferenceResult] = runAllStats((g1),(g2));  
+[LRegResult,LRegReferenceResult] = runAllStats(makeBinary(g1),makeBinary(g2)); %get all stats values
 save LogisticResults.mat C LRegResult LRegReferenceResult
 end
 
