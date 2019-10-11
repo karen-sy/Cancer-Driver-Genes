@@ -1,1 +1,0 @@
-RUSmdl.mat contains the model AND the SYNTHETIC data (validation stage) results

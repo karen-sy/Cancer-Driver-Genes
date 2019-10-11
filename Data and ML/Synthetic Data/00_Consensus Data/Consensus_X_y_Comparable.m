@@ -10,6 +10,8 @@ load bedfile.mat; % snvboxGenes.txt; cell, abc-sorted by gene name
 load mutfile_final.mat; % mutations.txt; cell, abc-sorted by gene name
 load patientNames.mat patientNames;
 
+cancerIdx = strcmp(mutfile_final(:,8), 'Breast Adenocarcinoma');
+mutfile_final = mutfile_final(cancerIdx,:);
 %--------Mutation File--------------
 totalPatients = length(unique(patientNames));
 GeneName = string(mutfile_final(:,1)); %ex: IVL
@@ -56,7 +58,6 @@ for i = 1:length(U_GeneName)
                 
         %MutationEntropy
         [MutationEntropy(i),~] = isrecurrent2(Geneid, MutStart(logical(MutIdx)),GeneStart,ExonSize,ExonStart);
-        geneLength(i) = cell2mat(bedfile(Geneid,3))- cell2mat(bedfile(Geneid,2));
        geneCountFraction(i) = length(unique(patientNames(MutIdx)))/totalPatients;%fraction of patients gene shows up in
     end
     disp(i)
@@ -83,14 +84,14 @@ y1 = (ismember(U_GeneName,OncoKey(:,1))); %oncogenes = 2
 y2 = (ismember(U_GeneName,TSGKey(:,1)));   %TSGs = 3
 y = y0+2*y1+3*y2;
 
-% Clean & save
-X = X(run == 1, :); %omit entries with unknown or wrong ("?") gene names
-y = y(run == 1, :); y0 = y0(run == 1, :); y1 = y1(run == 1, :); y2 = y2(run == 1, :);
-
-save X.mat X
-save y.mat y y0 y1 y2
-save information.mat SilFrac NonFrac MisFrac R_MisFrac MisToSil NonSilToSil ...
-    MissenseEntropy MutationEntropy
+% % Clean & save
+% X = X(run == 1, :); %omit entries with unknown or wrong ("?") gene names
+% y = y(run == 1, :); y0 = y0(run == 1, :); y1 = y1(run == 1, :); y2 = y2(run == 1, :);
+% 
+% save X.mat X
+% save y.mat y y0 y1 y2
+% save information.mat SilFrac NonFrac MisFrac R_MisFrac MisToSil NonSilToSil ...
+%     MissenseEntropy MutationEntropy
 
 clearvars -except X y %clear to declutter workspace
 

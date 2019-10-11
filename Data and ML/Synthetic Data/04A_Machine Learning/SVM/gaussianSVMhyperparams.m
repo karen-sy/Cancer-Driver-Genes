@@ -3,7 +3,7 @@ function  gaussianSVMhyperparams (data)
 %% Fit a classification model
 clc
 y = data(:,end);
-X = data(:,(end-1));
+X = data(:,1:(end-1));
  
 
 %Set up a partition for cross-validation. This step fixes the train and test sets that the optimization uses at each step.
@@ -17,34 +17,38 @@ opts = struct('Optimizer','bayesopt','ShowPlots',true,'CVPartition',c,...
 
 t = templateSVM('Standardize',1,'KernelFunction','gaussian');
 
-[Model] = fitcecoc(X,y,'Learners',t,...
-    'OptimizeHyperparameters','auto','HyperparameterOptimizationOptions',opts);
+%[Model] = fitcecoc(X,y,'Learners',t,...
+%    'OptimizeHyperparameters','auto','HyperparameterOptimizationOptions',opts);
 
-kernelscale = Model.HyperparameterOptimizationResults.XAtMinObjective.KernelScale; %now we know the optimized kernel scale
-boxconstraint = Model.HyperparameterOptimizationResults.XAtMinObjective.BoxConstraint;
+%kernelscale = Model.HyperparameterOptimizationResults.XAtMinObjective.KernelScale; %now we know the optimized kernel scale
+%boxconstraint = Model.HyperparameterOptimizationResults.XAtMinObjective.BoxConstraint;
 
+% results
+boxconstraint = 1.1124;
+kernelscale = 16.72;
 
 %% Find the loss of the optimized model.
 
 t = templateSVM('Standardize',1,'KernelFunction','gaussian','BoxConstraint',boxconstraint,...
     'KernelScale',kernelscale);
 
-FinalModel = fitcecoc(X,y,'Learners',t,'Cost',cost,'kfold',10);
-ce = kfoldLoss(FinalModel); %inaccuracy
-disp(ce)
+FinalModel = fitcecoc(X,y,'Learners',t);
  
-%% predict 
-% %%%%%%%%%%%%%%%%%%%%% to do: change to validation set not entire X
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-predicted = predict(FinalModel,X);
+%% predict on TCGA
+loadXY;
+predicted = predict(FinalModel,ConsensusX);
 
-%% Check accuracy
-%confusion matrix
-g1 = y; 
-g2 = predicted;%predicted
-C = confusionmat(g1,g2); 
-ConfusionPlot(C)
+%% Check accuracy on TCGA
+%convert to binary classification for now
+Y = makeBinary(ConsensusY); 
+predictedY = makeBinary(predicted);
+  
+[TCGAfullResult, TCGAfullReferenceResult] = runAllStats(1-Y,1-predictedY);
 
-save GaussianData.mat C predicted kernelscale boxconstraint cost
+TCGAfullResult.p_value = 1 - Hypergeometric_pvalue(Y, predictedY);
+
+%save GaussianData.mat C predicted kernelscale boxconstraint cost
+
+end
 
 

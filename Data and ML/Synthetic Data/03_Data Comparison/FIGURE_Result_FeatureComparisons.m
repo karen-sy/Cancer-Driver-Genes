@@ -9,7 +9,7 @@ close all
 clc
 categories =({'Silent Fraction' 'Nonsense Fraction' 'Missense Fraction' ...
     'Nonsense to Missense Ratio' 'Missense to Silent Ratio' 'Nonsilent to Silent Ratio'...
-    'Sample Count Fraction' 'Gene Length' 'Missense Entropy' 'Mutation Entropy'...
+    'Sample Count Fraction' 'Missense Entropy' 'Mutation Entropy'...
     'Missense p-value' 'Nonsense p-value' 'Silent p-value'});
 
 %%%% PLOTTING
@@ -20,7 +20,7 @@ for i = 1:length(categories)
     
    
     fig_Name = 'Figure_FeatureComparisons';
-    h1 = figure('units','inches','OuterPosition',[auto auto fig_width fig_height],'Name',fig_Name,'Color','w');
+    h1 = figure('units','inches','OuterPosition',[2 0 fig_width fig_height],'Name',fig_Name,'Color','w');
     %%%%% Plotting Panel
     pan1 = uipanel('Parent',h1,'pos',[0 .5 1 .5],'BackgroundColor','w','BorderType','none','HighlightColor','r');
     pan2 = uipanel('Parent',h1,'pos',[0 0 1 .5],'BackgroundColor','w','BorderType','none','HighlightColor','g');
@@ -94,7 +94,7 @@ for i = 1:length(categories)
         'FontSize',20,'Parent',ax2,'HorizontalAlignment','Center','VerticalAlignment','bottom','FontWeight','bold');
     
     
-    export_fig (sprintf(fig_name),'-r300',  '-png');
+%    export_fig (sprintf(fig_name),'-r300',  '-png');
     
 end
 end

@@ -1,4 +1,4 @@
-gausgiven the simulated maf file (corresponding to CONSENSUS), create the X.
+% given the simulated maf file (corresponding to CONSENSUS), create the X.
 
 %% Setup
 clc; clear
@@ -58,14 +58,8 @@ for j = 4:8
         [MutationEntropy(i), ~] = isRecurrentSynthetic(mutStart(mutIdx));
         
         
-        %         geneCountFraction(i) = length(unique(patientId(geneName == CurrentGeneName)))/length(unique(patientId));%fraction of patients gene shows up in
-        
-        %         if isempty(geneSeqConsensus((string(geneSeqConsensus(:,1)) == CurrentGeneName)))
-        %             geneLength(i) = NaN;
-        %         else
-        %             geneLength(i) = strlength(geneSeqConsensus((string(geneSeqConsensus(:,1)) == CurrentGeneName),2));     %8. gene length
-        %         end
-        %
+        geneCountFraction(i) = length(unique(patientId(geneName == CurrentGeneName)))/length(unique(patientId));%fraction of patients gene shows up in
+
         fprintf('\n %d/8: %d genes completed',j,i)
     end
     
@@ -81,7 +75,7 @@ for j = 4:8
     %     NonSilToSil = (MutationCount-SilentCount)./(SilentCount+1); % 6. non-silent to silent ratio (pseudo count added)
     %
     %% save
-    %     X = [SilFrac NonFrac MisFrac NonToMis MisToSil NonSilToSil geneCountFraction geneLength MissenseEntropy MutationEntropy]; %feature vector
+    %     X = [SilFrac NonFrac MisFrac NonToMis MisToSil NonSilToSil geneCountFraction MissenseEntropy MutationEntropy]; %feature vector
     
     if j == 1
         %         save simulateX1.mat
