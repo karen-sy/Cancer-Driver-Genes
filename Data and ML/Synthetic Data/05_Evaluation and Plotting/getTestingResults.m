@@ -5,11 +5,10 @@ function getTestingResults(trainedClassifier)
 % a mashup of functions from the 05_Eval_and_Plotting folder
 
 loadXY; % original 13 features
-%loadXY_new; %12 features
 
 %% accuracy / error / recall / precision / f-score / MCC / kappa
 Y = ConsensusY;
-[predictedY, ~] = trainedClassifier.predictFcn(ConsensusX);
+[predictedY, predictedYscores] = trainedClassifier.predictFcn(ConsensusX);
 
 %convert to binary classification for now
 Y = makeBinary(Y); predictedY = makeBinary(predictedY);
@@ -18,7 +17,7 @@ Y = makeBinary(Y); predictedY = makeBinary(predictedY);
 
 TCGAfullResult.p_value = 1 - Hypergeometric_pvalue(Y, predictedY);
 
-save predictedY.mat predictedY  
+save predictedY.mat predictedY predictedYscores
 save TCGAfullReferenceResult.mat TCGAfullReferenceResult
 save TCGAresultsRUS.mat TCGAfullResult  
 

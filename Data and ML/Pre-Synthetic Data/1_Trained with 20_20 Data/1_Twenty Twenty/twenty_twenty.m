@@ -38,9 +38,9 @@ OncoScore = zeros(1,length(U_GeneName));
 %identical in-frame insertions or deletions
 
 %initialize identification matrices
-TSGList = []; 
-TSGCurateList = []; %for TSGs that need a second look (manual curation)
-OncogeneList = []; 
+labels = zeros(length(U_GeneName),1);
+totalscore = zeros(length(U_GeneName),1);
+
 
 for i = 1:length(U_GeneName)
 MutIdx = ismember(GeneName,U_GeneName(i));  %matrix of logicals, 1 when gene appears in mutation list
@@ -91,26 +91,20 @@ TSGScore(i) = (InactivatingCount(i))/MutationCount(i); %if >20% gene is tsg
 
  
 if (OncoScore(i) >= 0.2) && (ClusteredCount(i)) > 10 && TSGScore(i) < 0.05
-    OncogeneList = [OncogeneList; string(U_GeneName(i))]; %add oncogene to list
+    labels(i) = 1;
     fprintf('%s is an Oncogene \n', string(U_GeneName(i))); 
 elseif ((OncoScore(i) >= 0.2) && (ClusteredCount(i) > 10) && (TSGScore(i) >= 0.5)) || (OncoScore(i) < 0.2)
     if (TSGScore(i) >= 0.2) && (InactivatingCount(i) >=7) 
                 if InactivatingCount(i) > 20 %certainly a TSG
                     fprintf('%s is a TSG \n', string(U_GeneName(i)));
-                    TSGList = [TSGList; string(U_GeneName(i))]; %add TSG gene to list
+                  	labels(i) = 1;
                 else %In those cases in which 7~20 inactivating mutations were recorded in the COSMIC database, manual curation was performed.
-                    %fprintf('%s is a TSG (Manually curate.) \n', string(U_GeneName(i))); 
-                    TSGCurateList = [TSGCurateList; string(U_GeneName(i))]; %add TSG gene to list
+                    labels(i) = 1; %OR zero (manual)
                 end
     end
 end
+totalscore(i) = OncoScore(i) + TSGScore(i);
+disp(i)
 end
 
-save OncogeneList.mat OncogeneList %save list of driver genes
-save TSGList.mat TSGList
-save TSGListCurate.mat TSGCurateList
-
-save 20_20_Data.mat U_GeneName MutationCount SilentCount NonsenseCount ... 
-     IndelCount SpliceCount NonstopCount ...
-     MissenseCount R_MissenseCount ...
-     InframeCount R_InframeCount
+save twentytwentyResults.mat labels totalscore;

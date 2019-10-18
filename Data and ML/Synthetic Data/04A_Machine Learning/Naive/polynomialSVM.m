@@ -1,16 +1,17 @@
-function [trainedClassifier] = polynomialSVM(data)
+function [trainedClassifier] = polynomialSVM(predictors, response)
 %the "polynomial" version of gaussian SVM: polynomial (degree 3)?
 
 %% Extract predictors and response
 % This code processes the data into the right shape for training the
 % model.
-% Convert input to table
 rng default
 
+% Set up holdout validation
+cvp = cvpartition(response, 'Holdout', 0.15);
+trainingPredictors = predictors(cvp.training, :);
+trainingResponse = response(cvp.training, :);
 
-predictors = data(:,1:(end-1));
-response = data(:,end);
- 
+
 % Train a classifier
 % This code specifies all the classifier options and trains the classifier.
 template = templateSVM(...
@@ -18,42 +19,32 @@ template = templateSVM(...
     'PolynomialOrder', 3, ...
     'Standardize', true);
 classificationSVM = fitcecoc(...
-    predictors, ...
-    response, ...
+    trainingPredictors, ...
+    trainingResponse, ...
     'Learners', template, ...
     'Coding', 'onevsone', ...
     'ClassNames', [1; 2; 3]);
 
-%% Create the result struct with predict function
- svmPredictFcn = @(x) predict(classificationSVM, x);
-trainedClassifier.predictFcn = @(x) svmPredictFcn(x);
-
-% Add additional fields to the result struct
-trainedClassifier.ClassificationSVM = classificationSVM;
-
-%% Extract predictors and response
-% This code processes the data into the right shape for training the
-% model.
-  
-% Set up holdout validation
-cvp = cvpartition(response, 'Holdout', 0.25);
-trainingPredictors = predictors(cvp.training, :);
-trainingResponse = response(cvp.training, :);
- 
 % Create the result struct with predict function
 svmPredictFcn = @(x) predict(classificationSVM, x);
-validationPredictFcn = @(x) svmPredictFcn(x); 
 
 % Compute validation predictions
 validationPredictors = predictors(cvp.test, :);
 validationResponse = response(cvp.test, :);
-[validationPredictions, ~] = validationPredictFcn(validationPredictors);
- 
+[validationPredictions, validationScores] = svmPredictFcn(validationPredictors);
+[fullPredictions, fullScores] = svmPredictFcn(predictors);
+
+%% Create the result struct with predict function
+trainedClassifier.predictFcn = @(x) svmPredictFcn(x);
+
+% Add additional fields to the result struct
+trainedClassifier.model = classificationSVM;
 
 %% display results
 %figure;
 %ConfusionPlot(confusionmat(validationResponse,validationPredictions));title('polynomial svm');
-[polynomialSVMResult,polynomialSVMReferenceResult] = runAllStats(makeBinary(validationResponse),makeBinary(validationPredictions));
-     save polynomialSVMResults.mat polynomialSVMResult polynomialSVMReferenceResult
+[polySVMResult,~] = runAllStats(1-makeBinary(validationResponse),1-makeBinary(validationPredictions));
 
+save polySVMSyntheticResults.mat polySVMResult validationPredictions validationResponse validationScores fullPredictions fullScores trainedClassifier
+save polySVMmodel.mat trainedClassifier
 end

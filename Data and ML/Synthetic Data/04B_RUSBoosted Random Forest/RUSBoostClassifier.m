@@ -1,12 +1,14 @@
-function [trainedClassifier, validationAccuracy] = RUSBoostClassifier(trainingData)
+function [trainedClassifier] = RUSBoostClassifier(predictors, response)
 
 %%
 cd(fileparts(which('RUSBoostClassifier'))) %cd to current folder so new results folder will be created here
 
 close all;
 rng default;
-predictors = trainingData(:,1:(end-1));
-response = trainingData(:,end);
+
+%%
+close all;
+rng default; 
 
 % Set up holdout validation
 cvp = cvpartition(response, 'Holdout', 0.15); 
@@ -18,15 +20,15 @@ trainingResponse = response(cvp.training, :);
 % cost
 load syn_cost.mat cost %class weights to account for imbalance
 
-treeTemplate = templateTree('MaxNumSplits',500);
+treeTemplate = templateTree('MaxNumSplits',5000);
 classificationEnsemble = fitcensemble(...
     trainingPredictors, ...
-    trainingResponse, 'Cost', cost,...
-    'NumLearningCycles',1500,...
+    trainingResponse, ...
+    'NumLearningCycles',1200,...
     'Method', 'RUSBoost', ...
     'LearnRate' , 0.1,...
     'Learners', treeTemplate, ...
-    'RatiotoSmallest',[40 1 1],...  
+    'RatiotoSmallest',[1 1 1],...
     'nprint',100);
 
 
@@ -54,28 +56,23 @@ trainedClassifier.ClassificationEnsemble = classificationEnsemble;
 validationPredictors = predictors(cvp.test, :);
 validationResponse = response(cvp.test, :);  %actual class
 [validationPredictions, validationScores] = trainedClassifier.predictFcn(validationPredictors); %predicted class
+[fullPredictions, fullScores] = trainedClassifier.predictFcn(predictors); %predicted class
 
-% Compute validation accuracy
-correctPredictions = (validationPredictions == validationResponse);
-validationAccuracy = sum(correctPredictions)/length(correctPredictions);
-
-
+ 
 %% In a new folder, save results
-[validationResult,validationReferenceResult] = runAllStats(validationResponse,validationPredictions); %get all stats values
-[fullResult,fullReferenceResult] = runAllStats(response,trainedClassifier.predictFcn(predictors)); %kinda useless
+[validationResult,~] = runAllStats(validationResponse,validationPredictions); %get all stats values
+[fullResult,~] = runAllStats(response,fullPredictions); %kinda useless
 
-time = clock;
-newfolder = sprintf('Results_%d_%d_%d_%d_%d',time(1:5));
-mkdir (newfolder); cd (newfolder)
-save RUSsyntheticResults.mat validationResult validationReferenceResult fullResult fullReferenceResult trainedClassifier
-save mdl.mat trainedClassifier %just another copy of the classifier
+%time = clock;
+%newfolder = sprintf('RUSResults_%d_%d_%d_%d_%d',time(1:5));
+%mkdir (newfolder); cd (newfolder)
+save RUSsyntheticResults.mat validationResponse validationResult validationScores fullResult fullScores
+save RUSmdl.mat trainedClassifier %just another copy of the classifier
 
 %% plot results
 ConfusionPlot(confusionmat(validationResponse,validationPredictions)); %visualize confusion plot
 title("validation set");
-
-
-%% plot ensemble quality
+% plot ensemble quality
 %FIGURE_Rusboost_EnsembleQuality (classificationEnsemble, validationPredictors, validationResponse)
 
 end

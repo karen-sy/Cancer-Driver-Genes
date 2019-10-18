@@ -36,16 +36,21 @@ FinalModel = fitcecoc(X,y,'Learners',t);
  
 %% predict on TCGA
 loadXY;
-predicted = predict(FinalModel,ConsensusX);
+[predicted,score] = predict(FinalModel,ConsensusX);
 
 %% Check accuracy on TCGA
 %convert to binary classification for now
 Y = makeBinary(ConsensusY); 
 predictedY = makeBinary(predicted);
   
-[TCGAfullResult, TCGAfullReferenceResult] = runAllStats(1-Y,1-predictedY);
-
+[TCGAfullResult, ~] = runAllStats(1-Y,1-predictedY);
 TCGAfullResult.p_value = 1 - Hypergeometric_pvalue(Y, predictedY);
+
+time = clock;
+newfolder = sprintf('Results_%d_%d_%d_%d_%d',time(1:5));
+mkdir (newfolder); cd (newfolder)
+save SVMsyntheticResults.mat validationResult validationReferenceResult fullResult fullReferenceResult trainedClassifier
+save mdl.mat trainedClassifier %just another copy of the classifier
 
 %save GaussianData.mat C predicted kernelscale boxconstraint cost
 

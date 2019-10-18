@@ -1,25 +1,21 @@
-function [trainedClassifier, validationAccuracy] = randomForest(trainingData)
+function [trainedClassifier] = randomForest(predictors, response)
 
-clearvars -except X y trainingData
 rng default
-predictors = trainingData(:,1:(end-1));
-response = trainingData(:,end);
  
 % Set up holdout validation
-cvp = cvpartition(response, 'Holdout', 0.25);
+cvp = cvpartition(response, 'Holdout', 0.15);
 trainingPredictors = predictors(cvp.training, :);
 trainingResponse = response(cvp.training, :);
  
 %% Train a classifier
- 
+load Cost.mat cost
+
 template = templateTree(...
     'MaxNumSplits', 5000);
 classificationEnsemble = fitcensemble(...
     trainingPredictors, ...
     trainingResponse, ... 
-    'Method', 'Bag', ... 
-    'NumLearningCycles', 30, ...
-    'Cost', cost,...
+    'NumLearningCycles', 20, ...    %'Cost', cost,...
     'Learners', template, ...
     'ClassNames', [1; 2; 3],...      
     'nprint',100);
@@ -35,16 +31,16 @@ trainedClassifier.ClassificationEnsemble = classificationEnsemble;
 %% Compute validation predictions
 validationPredictors = predictors(cvp.test, :);
 validationResponse = response(cvp.test, :);
-[validationPredictions, ~] = trainedClassifier.predictFcn(validationPredictors);
- 
+[validationPredictions, validationScores] = trainedClassifier.predictFcn(validationPredictors);
+[fullPredictions, fullScores] = trainedClassifier.predictFcn(predictors);
 
 %% results
 %figure(2)
 %ConfusionPlot(confusionmat(validationResponse,validationPredictions)); %visualize confusion plot
 %[ForestResult,ForestReferenceResult] = runAllStats(validationResponse,validationPredictions); %get all stats values
-[ForestResult,ForestReferenceResult] = runAllStats(makeBinary(validationResponse),makeBinary(validationPredictions)); %get all stats values
+[ForestResult,~] = runAllStats(1-makeBinary(validationResponse),1-makeBinary(validationPredictions)); %get all stats values
 
-save forestResults.mat ForestResult ForestReferenceResult
-
+save forestResults.mat ForestResult validationPredictions validationResponse validationScores fullPredictions fullScores trainedClassifier
+save forestModel.mat trainedClassifier
 end
 

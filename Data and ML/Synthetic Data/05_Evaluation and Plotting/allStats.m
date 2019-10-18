@@ -91,13 +91,13 @@ classdef allStats
                     predict_class{i,j}=sum(val);
                 end
                 row_name{i}=strcat('Actual_class',num2str(i));
-                disp(class_ref{i})
+                %disp(class_ref{i})
             end
             
             c_matrix_table=cell2table(predict_class);
             c_matrix_table.Properties.RowNames=row_name;
-            disp('Confusion Matrix')
-            disp(c_matrix_table)
+            %disp('Confusion Matrix')
+            %disp(c_matrix_table)
             [Result,RefereceResult]=allStats.getValues(c_matrix);
             %Output Struct for individual Classes
             RefereceResult.Class=class_ref;
@@ -117,15 +117,15 @@ classdef allStats
                     Param=struct2table(RefereceResult);
                     disp(Param)
                 else
-                    disp('Two-Class Confution Matrix')
+                    %disp('Two-Class Confution Matrix')
                     param={'','TruePositive','FalsePositive';...
                         'FalseNegative',c_matrix(1,1),c_matrix(1,2);...
                         'TrueNegative=TN',c_matrix(2,1),c_matrix(2,2)};
-                    disp(param)
+                    %disp(param)
                     
                 end
-                disp('Over all valuses')
-                disp(Result)
+                %disp('Over all valuses')
+                %disp(Result)
                 
             end
         end

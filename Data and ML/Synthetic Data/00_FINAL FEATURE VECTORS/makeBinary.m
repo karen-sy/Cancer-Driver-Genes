@@ -5,8 +5,7 @@ pos = find(input ~= 1); %convert tcg and og categories into one "driver" categor
 input(neg) = 0;
 input(pos) = 1;
 
-if unique(input) == ([0; 1])
 binary = input;
-end
+
 
 end

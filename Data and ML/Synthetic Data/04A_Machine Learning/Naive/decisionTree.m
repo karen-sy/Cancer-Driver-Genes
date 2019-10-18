@@ -1,13 +1,8 @@
-function [trainedClassifier, validationAccuracy] = decisionTree(data)
-%% decisionTree.m
-
-% Extract predictors and response
-predictors = data(:, 1:(end-1));
-response = data(:,end);
- 
+function [trainedClassifier] = decisionTree(predictors, response)
 %% Train a classifier
 % This code specifies all the classifier options and trains the classifier.
 
+rng default
  
 classificationTree = fitctree(...
     predictors, ...
@@ -24,11 +19,9 @@ trainedClassifier.predictFcn = @(x) treePredictFcn(predictorExtractionFcn(x));
 
 % Add additional fields to the result struct
 trainedClassifier.ClassificationTree = classificationTree;
-trainedClassifier.HowToPredict = sprintf('To make predictions on a new predictor column matrix, X, use: \n  yfit = c.predictFcn(X) \nreplacing ''c'' with the name of the variable that is this struct, e.g. ''trainedModel''. \n \nX must contain exactly 8 columns because this model was trained using 8 predictors. \nX must contain only predictor columns in exactly the same order and format as your training \ndata. Do not include the response column or any columns you did not import into the app. \n \nFor more information, see <a href="matlab:helpview(fullfile(docroot, ''stats'', ''stats.map''), ''appclassification_exportmodeltoworkspace'')">How to predict using an exported model</a>.');
-
  
 %% Set up holdout validation
-cvp = cvpartition(response, 'Holdout', 0.25);
+cvp = cvpartition(response, 'Holdout', 0.15);
 trainingPredictors = predictors(cvp.training, :);
 trainingResponse = response(cvp.training, :);
  
@@ -46,23 +39,17 @@ classificationTree = fitctree(...
 treePredictFcn = @(x) predict(classificationTree, x);
 validationPredictFcn = @(x) treePredictFcn(x);
 
- 
 
 %% Compute validation predictions
 validationPredictors = predictors(cvp.test, :);
 validationResponse = response(cvp.test, :);
-[validationPredictions, ~] = validationPredictFcn(validationPredictors);
-
-% Compute validation accuracy
-correctPredictions = (validationPredictions == validationResponse);
-isMissing = isnan(validationResponse);
-correctPredictions = correctPredictions(~isMissing);
-validationAccuracy = sum(correctPredictions)/length(correctPredictions);
-
+[validationPredictions, validationScores] = validationPredictFcn(validationPredictors);
+[fullPredictions, fullScores] = treePredictFcn(predictors);
+    
 %% display results
 figure;
 %ConfusionPlot(confusionmat(validationResponse,validationPredictions)); title('tree');
-[treeResult,treeReferenceResult] = runAllStats(makeBinary(validationResponse),makeBinary(validationPredictions));
-    save treeResults.mat treeResult treeReferenceResult
-
+[treeResult,~] = runAllStats(1-makeBinary(validationResponse),1-makeBinary(validationPredictions));
+save treeResults.mat treeResult validationPredictions validationResponse validationScores fullPredictions fullScores
+save treeModel.mat classificationTree
 end
