@@ -21,7 +21,7 @@ labels = trueLabels(idxNew);
 scores = table2array(mutsigcv(:,2));
 scores = scores(idx~=0);
 
-save mutsigInfo.mat scores labels
+save mutsigInfo.mat scores labels 
 
 
 % return labels, in matching gene order with scores

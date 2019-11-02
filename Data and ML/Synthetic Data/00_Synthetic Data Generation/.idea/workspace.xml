@@ -2,134 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e05aef38-b846-429e-8e85-08bca894269a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04A_Machine Learning/Naive/classifykmeans.m" beforeDir="false" afterPath="$PROJECT_DIR$/../04A_Machine Learning/Naive/classifykmeans.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04A_Machine Learning/Naive/logisticRegression.m" beforeDir="false" afterPath="$PROJECT_DIR$/../04A_Machine Learning/Naive/logisticRegression.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/LogisticResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/NaiveBars.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/NaiveBars2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/classifykmeans.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/decisionTree.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/gaussianSVM.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/gaussianSVMhyperparams.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/gaussianSVMnaive.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/knnClassifier.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/logisticRegression.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/makeBars.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/naiveGaussianResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/LogisticResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/RunAllNaive.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/kmeansResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/knnResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/naiveGaussianResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/old/GaussianResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/old/knnResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/old/linearSVMResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/old/logisticResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/old/treeResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/1_Naive/results matrices/treeResults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/RUSBoostBinary.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/RUSBoostClassifier.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/RUSClassifier2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/RUSensembleQuality.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/RUSresults.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/boostBinary.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/boostClassifier.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/randomForest.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/results.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/run.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/score.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/simulateMutFile.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/syn_cost.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/2_Random Forest/tuneForest.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/DefaultCost.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/EditedCost.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/SVMLinear.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/SVMLinearData.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/SVMLinearModel.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/SVMLinear_draft.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/X.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/ex2data1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/ex2data2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Linear/y.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Quadratic/Howto.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Quadratic/SVMQuad.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/Quadratic/SVMQuadModel.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Draft/SVMGaussian.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/RF Kernel/Untitled2.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/RF Kernel/all500TreePaths.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/RF Kernel/constructPaths.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/RF Kernel/kernelRF.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/RF Kernel/myForestKernel.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/SVMClassifier.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/SVMfScores.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Trained on Consensus Data/GaussianData1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/Trained on Consensus Data/confmat1.fig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/confmat1.fig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/customKernelSample.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libSVMClassifier.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/COPYRIGHT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/FAQ.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/Makefile.win" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/heart_scale" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/libsvm.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/libsvm/svm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/libsvm/svm.m4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/libsvm/svm_model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/libsvm/svm_node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/libsvm/svm_parameter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/libsvm/svm_print_interface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/libsvm/svm_problem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/svm_predict.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/svm_scale.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/svm_toy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/svm_train.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/java/test_applet.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/libsvmread.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/libsvmread.mexw64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/libsvmwrite.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/libsvmwrite.mexw64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/make.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/svm_model_matlab.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/svm_model_matlab.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/svmpredict.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/svmpredict.mexw64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/svmtrain.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/matlab/svmtrain.mexw64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm-predict.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm-scale.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm-toy/qt/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm-toy/qt/svm-toy.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm-toy/windows/svm-toy.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm-train.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm.def" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/svm.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/tools/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/tools/checkdata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/tools/easy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/tools/grid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/tools/subset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/libsvm.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/libsvmread.mexw64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/libsvmwrite.mexw64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/svm-predict.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/svm-scale.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/svm-toy.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/svm-train.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/svmpredict.mexw64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/libsvm-3.23/windows/svmtrain.mexw64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/mdlSVM.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/mysigmoid.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/3_SVM/results.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../04_Machine Learning/cost.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_Cancer Types Implementation/allPredictedGeneNames3.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../06_Cancer Types Implementation/allPredictedGeneNames3.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Biology Model/FINAL VERSIONS/1_As in paper/FINAL2.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Biology Model/FINAL VERSIONS/1_As in paper/FINAL2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Biology Model/FINAL VERSIONS/1_As in paper/FinalODEs2.m" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Biology Model/FINAL VERSIONS/1_As in paper/FinalODEs2.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Biology Model/FINAL VERSIONS/1_As in paper/continuous.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Biology Model/FINAL VERSIONS/1_As in paper/continuous.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Biology Model/FINAL VERSIONS/1_As in paper/o2data.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Biology Model/FINAL VERSIONS/1_As in paper/o2data.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03_Data Comparison/Density Plots/All gene types/first.png" beforeDir="false" afterPath="$PROJECT_DIR$/../03_Data Comparison/Density Plots/All gene types/first.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03_Data Comparison/FIGURE_Result_FeatureComparisons_AllGenes.m" beforeDir="false" afterPath="$PROJECT_DIR$/../03_Data Comparison/FIGURE_Result_FeatureComparisons_AllGenes.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../03_Data Comparison/FIGURE_Result_FeatureComparisons_Binary.m" beforeDir="false" afterPath="$PROJECT_DIR$/../03_Data Comparison/FIGURE_Result_FeatureComparisons_Binary.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04A_Machine Learning/0_Other_Methods/MAIN_importAllMethods.m" beforeDir="false" afterPath="$PROJECT_DIR$/../04A_Machine Learning/0_Other_Methods/MAIN_importAllMethods.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/RUSsyntheticResults.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/RUSsyntheticResults.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/forestResults.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/forestResults.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/logitResults.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/logitResults.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/polySVMResults.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/polySVMResults.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/treeResults.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../04A_Machine Learning/testAllML_2019_10_15_15_24/treeResults.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04B_RUSBoosted Random Forest/RUSBoostClassifier.m" beforeDir="false" afterPath="$PROJECT_DIR$/../04B_RUSBoosted Random Forest/RUSBoostClassifier.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04B_RUSBoosted Random Forest/RUSmdl.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../04B_RUSBoosted Random Forest/RUSsyntheticResults.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05_Evaluation and Plotting/FIGURE_Result_SyntheticML_RankCdf.m" beforeDir="false" afterPath="$PROJECT_DIR$/../05_Evaluation and Plotting/FIGURE_Result_SyntheticML_RankCdf.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05_Evaluation and Plotting/FIGURE_Result_SyntheticML_RankCdf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05_Evaluation and Plotting/FIGURE_Result_Zoomed_SyntheticML_RankCdf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05_Evaluation and Plotting/Hypergeometric_pvalue.m" beforeDir="false" afterPath="$PROJECT_DIR$/../05_Evaluation and Plotting/Hypergeometric_pvalue.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05_Evaluation and Plotting/RUN_FIGURE_MethodsRankGenes.m" beforeDir="false" afterPath="$PROJECT_DIR$/../05_Evaluation and Plotting/RUN_FIGURE_MethodsRankGenes.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05_Evaluation and Plotting/RUN_FIGURE_Result_SyntheticML_RankCdf.m" beforeDir="false" afterPath="$PROJECT_DIR$/../05_Evaluation and Plotting/RUN_FIGURE_Result_SyntheticML_RankCdf.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05_Evaluation and Plotting/getTestingResults.m" beforeDir="false" afterPath="$PROJECT_DIR$/../05_Evaluation and Plotting/getTestingResults.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../05_Evaluation and Plotting/precrec_curve.m" beforeDir="false" afterPath="$PROJECT_DIR$/../05_Evaluation and Plotting/precrec_curve.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../06_Cancer Types Implementation/allPredictedGeneNames.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../06_Cancer Types Implementation/allPredictedGeneNames.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../REGENERON/Methods and Materials items/Synthetic data_training results + graph.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../REGENERON/Methods and Materials items/Synthetic data_training results + graph.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../REGENERON/Regeneron Paper.docx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,13 +37,28 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/generation/Code/synthData/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+            <state relative-caret-position="3401">
+              <caret line="737" column="18" selection-start-line="737" selection-start-column="18" selection-end-line="737" selection-end-column="18" />
+              <folding>
+                <element signature="e#157#451#0" expanded="true" />
+              </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/generation/Code/synthData/lineage/variables.go">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/generation/Code/synthData/lineage/processes.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1172" />
           </provider>
         </entry>
       </file>
@@ -224,6 +138,15 @@
               <item name="synthData" type="462c0819:PsiDirectoryNode" />
               <item name="genome" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="00_Synthetic Data Generation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_Synthetic Data Generation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="generation" type="462c0819:PsiDirectoryNode" />
+              <item name="Code" type="462c0819:PsiDirectoryNode" />
+              <item name="synthData" type="462c0819:PsiDirectoryNode" />
+              <item name="lineage" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -253,10 +176,10 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24777327" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25053304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -285,9 +208,20 @@
     <entry file="file://$PROJECT_DIR$/src/github.com/GoesToEleven/go-programming/code_samples/001-hello-world/main.go" />
     <entry file="file://$PROJECT_DIR$/src/generation/Code/synthData/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        <state relative-caret-position="3401">
+          <caret line="737" column="18" selection-start-line="737" selection-start-column="18" selection-end-line="737" selection-end-column="18" />
+          <folding>
+            <element signature="e#157#451#0" expanded="true" />
+          </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generation/Code/synthData/lineage/variables.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generation/Code/synthData/lineage/processes.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1172" />
       </provider>
     </entry>
   </component>

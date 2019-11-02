@@ -16,7 +16,6 @@ load twentytwentyInfo.mat scores; loadXY;
 load predictedY.mat predictedYscores;
 [x5, f5] = FIGURE_MethodsRankGenes(predictedYscores, ConsensusY, "mine_score");
 
-
 %% plot
 figure; hold on;
 
@@ -32,15 +31,15 @@ ylim([0 1]);
 plot(x4(1:100), f4(1:100),'Linewidth', 1);
 ylim([0 1]);
 
-plot(x5(1:100), f5(1:100),'Linewidth', 2);
+plot(x5(1:100), f5(1:100),'Linewidth', 3);
 ylim([0 1]);
 
 
-legend("tuson", "oncoclust", "activedriver", "20/20", "mine");
+legend("TUSON", "OncodriveClust", "ActiveDriver", "20/20", "THIS STUDY",'FontSize',12);
 
-title('Methods Comparison or whatever');
-xlabel('Gene rank or whatveer');
-ylabel('Enrichment or whatvevr the PAPER said');
+title('Comparison: CGC Enrichment', 'FontSize',16);
+xlabel('Rank','FontSize',13);
+ylabel('CGC Enrichment (%)','FontSize',13);
 
 export_fig -r300 -transparent FIGURE_Result_MethodsRankGenes.png;
 

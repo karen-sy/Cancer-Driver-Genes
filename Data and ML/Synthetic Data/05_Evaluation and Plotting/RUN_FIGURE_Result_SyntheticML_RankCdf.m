@@ -31,9 +31,9 @@ plot(x5, f5, 'LineWidth', 1);
 plot(x6, f6, 'LineWidth', 3);
 
 legend('logistic regression', 'decision tree', 'polynomial SVM', 'random forest', 'RUSBoosted random forest', 'Location', 'southeast');
-title('Recall or whatever');
-xlabel('Rank or whatever');
-ylabel('Enrichment or whatvevr the PAPER said');
+title('Cumulative distribution function of ranks for ML models');
+xlabel('Rank');
+ylabel('Cumulative distribution');
 
 export_fig -r300 -transparent FIGURE_Result_SyntheticML_RankCdf.png;
 

@@ -49,7 +49,7 @@ for i = 1:length(categories)
     A2 = ConsensusX(ConsensusY==1,i);
     B2 = ConsensusX(ConsensusY~=1,i);
     
-    [f1,xi1] = ksdensity(A1(A1~= Inf));
+    [f1,xi1] = ksdensity(A1(A1~= Inf)); 
     [f2,xi2] = ksdensity(B1(B1~= Inf));
     
     XLim1 = get(ax1,'XLim');

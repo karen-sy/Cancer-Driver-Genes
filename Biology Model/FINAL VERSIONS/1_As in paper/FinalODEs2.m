@@ -13,7 +13,7 @@ FinalFeedbacks
 % ODEs
 %all normal steady state = 500 --> c1 = 1.2e-4
 %all cancer steady state = 1000 --> c2 = 1e-4
-O2 = @(x_1,x_2)  v3/(a3+ (x_1+x_2)*(c1-(c1-c2)/(1+(5000/x_2)^10))); %o2 = 10 at critical level
+O2 = @(x_1,x_2)  v3/(a3+ (x_1+x_2));%*(c1-(c1-c2)/(1+(5000/x_2)^10))); %o2 = 10 at critical level
 D = @(O2) Dmax / (1 + (O2/(o2max-o2thresh))^5); %necrosis
 L = @(O2) (1- (o2max - O2)/o2thresh);
 

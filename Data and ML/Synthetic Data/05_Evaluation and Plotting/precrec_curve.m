@@ -13,7 +13,7 @@ function aupr =precrec_curve(output,original,colour)
     %% 
     % subplot(2,2,1);    
     %figure;
-    plot(stack_x,stack_y,colour);
+    plot(stack_x,stack_y,colour); ylim([0 1]);
     xlabel('recall');
     ylabel('precision');
 

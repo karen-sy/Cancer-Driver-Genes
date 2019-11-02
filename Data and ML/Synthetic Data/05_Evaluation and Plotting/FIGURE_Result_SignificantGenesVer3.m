@@ -71,7 +71,7 @@ y = [cell2mat(ColorectalSearchCount(end:-1:1,2))];
 barh(y,'Parent',currentAx); % stacks values in each row of y together
 box(ax1,'off');
 ax1.XLim = [10 inf];
-set(ax1,'FontName','Times New Roman','FontSize',18);
+set(ax1,'FontName','Times New Roman','FontSize',14);
 yticklabels(currentAx,colonDriverintersect(15:-1:1));
 set(ax1.YAxis,'FontSize',14);
 set(ax1.XAxis,'FontWeight','bold');
@@ -85,7 +85,7 @@ barh(y,'Parent',currentAx); % stacks values in each row of y together
 yticklabels(currentAx,breastDriverintersect(15-3:-1:1));
 ax2.XLim = [10 inf];
 box(ax2,'off');
-set(ax2,'FontName','Times New Roman','FontSize',18);
+set(ax2,'FontName','Times New Roman','FontSize',14);
 set(ax2.YAxis,'FontSize',14);
 set(ax2.XAxis,'FontWeight','bold');
 title('Breast Cancer','Parent',currentAx,'FontSize',20);
@@ -97,7 +97,7 @@ barh(y,'Parent',currentAx); % stacks values in each row of y together
 yticklabels(currentAx,pancreaDriverintersect(15-3:-1:1));
 ax3.XLim = [10 inf];
 box(ax3,'off');
-set(ax3,'FontName','Times New Roman','FontSize',18);
+set(ax3,'FontName','Times New Roman','FontSize',14);
 set(ax3.XAxis,'FontWeight','bold');
 set(ax3.YAxis,'FontSize',14);
 title('Pancreatic Cancer','Parent',currentAx,'FontSize',20);
@@ -110,7 +110,7 @@ barh(y,'Parent',currentAx); % stacks values in each row of y together
 yticklabels(currentAx,melanomaDriverintersect(15-1:-1:1));
 ax4.XLim = [10 inf];
 box(ax4,'off');
-set(ax4,'FontName','Times New Roman','FontSize',18);
+set(ax4,'FontName','Times New Roman','FontSize',14);
 set(ax4.XAxis,'FontWeight','bold');
 set(ax4.YAxis,'FontSize',14);
 title('Melanoma','Parent',currentAx,'FontSize',20);

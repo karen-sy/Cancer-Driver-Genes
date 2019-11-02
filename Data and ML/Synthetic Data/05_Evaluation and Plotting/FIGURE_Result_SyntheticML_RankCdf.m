@@ -6,17 +6,17 @@ trueLabels = makeBinary(trueLabels);
 
 % get driver scores predicted by classifier and label with rank
 driverScores = sum(allScores(:,2:3),2);
-[~,idx] = ismember(driverScores,sort(driverScores,'descend'));
+[~,rank] = ismember(driverScores,sort(driverScores,'descend'));
 
 % extract ranks of only actual driver genes
 if flag == 'n' % if most ranks are all same (thus meaningless), need to attribute 'random' rank 
-    idx = removeOverlap(idx);
+    rank = removeOverlap(rank);
 end
-driverIdx = idx(trueLabels == 1);
-driverIdx = sort(driverIdx,'ascend');
+driverRank = rank(trueLabels == 1);
+driverRank = sort(driverRank,'ascend');
  
 
-[f, x] = ecdf(driverIdx); 
+[f, x] = ecdf(driverRank); 
 
 % plot
 %plot(x,f, 'LineWidth', 3);]

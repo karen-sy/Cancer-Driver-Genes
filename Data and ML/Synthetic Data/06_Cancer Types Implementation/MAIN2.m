@@ -38,13 +38,10 @@ colonDriver = [colonOG;colonTSG];
 [~,orderDriver] = sort((colonScore(colonDriver,2)+colonScore(colonDriver,3)),'descend');
 colonOG = colonOG(orderOG); colonTSG = colonTSG(orderTSG); colonDriver = colonDriver(orderDriver);
  
-colonOGintersect = intersect(colonOG,find(colonY == 2),'stable'); colonOGscores = colonScore(colonOGintersect,2);
-colonTSGintersect = intersect(colonTSG,find(colonY == 3),'stable'); colonTSGscores = colonScore(colonTSGintersect,3);
-colonDriverintersect = intersect(colonDriver, find(colonY ~= 1), 'stable'); colonDriverscores = colonScore(colonDriverintersect,2)+colonScore(colonDriverintersect,3);
- 
-colonOGcountReal = intersect(find(colon),find(ConsensusY == 2)); %how many og's in TCGA
-colonTSGcountReal = intersect(find(colon),find(ConsensusY == 3));
-
+colonOGintersect = intersect(colonOG,find(colonY == 2),'stable');  
+colonTSGintersect = intersect(colonTSG,find(colonY == 3),'stable'); 
+colonDriverintersect = intersect(colonDriver, find(colonY ~= 1), 'stable'); 
+colonDriverNonintersect = setdiff(colonDriver, find(colonY ~=1), 'stable');  
 
 %melanoma
 [melanomaPredicted,melanomaScore]  = classifier.predictFcn([melanomaX]);
@@ -60,16 +57,11 @@ melanomaTSG = melanomaTSG(orderTSG);
 melanomaDriver = melanomaDriver(orderDriver);
  
 melanomaOGintersect = intersect(melanomaOG,find(melanomaY == 2),'stable'); 
-melanomaOGscores = melanomaScore(melanomaOGintersect,2);
 melanomaTSGintersect = intersect(melanomaTSG,find(melanomaY == 3),'stable'); 
-melanomaTSGscores = melanomaScore(melanomaTSGintersect,3);
 melanomaDriverintersect = intersect(melanomaDriver, find(melanomaY ~= 1),'stable'); 
-melanomaDriverscores = melanomaScore(melanomaDriverintersect,2)+ ...
-                       melanomaScore(melanomaDriverintersect,3);
+melanomaDriverNonintersect = setdiff(melanomaDriver, find(melanomaY ~= 1),'stable'); 
  
-melanomaOGcountReal = intersect(find(melanoma),find(ConsensusY == 2)); %how many og's in TCGA
-melanomaTSGcountReal = intersect(find(melanoma),find(ConsensusY == 3));
-
+  
 
 %breast
 [breastPredicted,breastScore]  = classifier.predictFcn([breastX]);
@@ -85,14 +77,10 @@ breastTSG = breastTSG(orderTSG);
 breastDriver = breastDriver(orderDriver);
  
 breastOGintersect = intersect(breastOG,find(breastY == 2),'stable');
-breastOGscores = breastScore(breastOGintersect,2);
 breastTSGintersect = intersect(breastTSG,find(breastY == 3),'stable'); 
-breastTSGscores = breastScore(breastTSGintersect,3);
 breastDriverintersect = intersect(breastDriver, find(breastY ~= 1), 'stable'); 
-breastDriverscores = breastScore(breastDriverintersect,2)+breastScore(breastDriverintersect,3);
- 
-breastOGcountReal = intersect(find(breast),find(ConsensusY == 2)); %how many og's in TCGA
-breastTSGcountReal = intersect(find(breast),find(ConsensusY == 3));
+breastDriverNonintersect = setdiff(breastDriver, find(breastY ~= 1), 'stable'); 
+  
  
 %pancrea
 [pancreaPredicted,pancreaScore]  = classifier.predictFcn([pancreaX]);
@@ -108,16 +96,10 @@ pancreaTSG = pancreaTSG(orderTSG);
 pancreaDriver = pancreaDriver(orderDriver);
  
 pancreaOGintersect = intersect(pancreaOG,find(pancreaY == 2),'stable');
-pancreaOGscores = pancreaScore(pancreaOGintersect,2);
 pancreaTSGintersect = intersect(pancreaTSG,find(pancreaY == 3),'stable'); 
-pancreaTSGscores = pancreaScore(pancreaTSGintersect,3);
 pancreaDriverintersect = intersect(pancreaDriver, find(pancreaY ~= 1), 'stable'); 
-pancreaDriverscores = pancreaScore(pancreaDriverintersect,2)+ ...
-                      pancreaScore(pancreaDriverintersect,3);
-
-pancreaOGcountReal = intersect(find(pancrea),find(ConsensusY == 2)); %how many og's in TCGA
-pancreaTSGcountReal = intersect(find(pancrea),find(ConsensusY == 3));
-
+pancreaDriverNonintersect = setdiff(pancreaDriver, find(pancreaY ~= 1), 'stable'); 
+ 
 
 
 %% 
@@ -134,6 +116,7 @@ colonDriver = uniqueGeneNames(colon(colonDriver));
 colonOGintersect = uniqueGeneNames(colon(colonOGintersect));
 colonTSGintersect = uniqueGeneNames(colon(colonTSGintersect));
 colonDriverintersect = uniqueGeneNames(colon(colonDriverintersect));
+colonDriverNonintersect = uniqueGeneNames(colon(colonDriverNonintersect));
 
 melanomaOG = uniqueGeneNames(melanoma(melanomaOG));
 melanomaTSG = uniqueGeneNames(melanoma(melanomaTSG));
@@ -141,6 +124,7 @@ melanomaDriver = uniqueGeneNames(melanoma(melanomaDriver));
 melanomaOGintersect = uniqueGeneNames(melanoma(melanomaOGintersect));
 melanomaTSGintersect = uniqueGeneNames(melanoma(melanomaTSGintersect));
 melanomaDriverintersect = uniqueGeneNames(melanoma(melanomaDriverintersect));
+melanomaDriverNonintersect = uniqueGeneNames(melanoma(melanomaDriverNonintersect));
 
 pancreaOG = uniqueGeneNames(pancrea(pancreaOG));
 pancreaTSG = uniqueGeneNames(pancrea(pancreaTSG));
@@ -148,6 +132,7 @@ pancreaDriver = uniqueGeneNames(pancrea(pancreaDriver));
 pancreaOGintersect = uniqueGeneNames(pancrea(pancreaOGintersect));
 pancreaTSGintersect = uniqueGeneNames(pancrea(pancreaTSGintersect));
 pancreaDriverintersect = uniqueGeneNames(pancrea(pancreaDriverintersect));
+pancreaDriverNonintersect = uniqueGeneNames(pancrea(pancreaDriverNonintersect));
 
 breastOG = uniqueGeneNames(breast(breastOG));
 breastTSG = uniqueGeneNames(breast(breastTSG));
@@ -155,6 +140,7 @@ breastDriver = uniqueGeneNames(breast(breastDriver));
 breastOGintersect = uniqueGeneNames(breast(breastOGintersect));
 breastTSGintersect = uniqueGeneNames(breast(breastTSGintersect));
 breastDriverintersect = uniqueGeneNames(breast(breastDriverintersect));
+breastDriverNonintersect = uniqueGeneNames(breast(breastDriverNonintersect));
 
 %%
 %% exportAllCancerAllGenes.m
@@ -163,23 +149,23 @@ breastDriverintersect = uniqueGeneNames(breast(breastDriverintersect));
 % all predicted and tcga cross-verified og/tsg's across cancer types. 
 
 names = ["colonOG" "colonTSG" "colonDriver" "colonOGintersect" ...
-    "colonTSGintersect" "colonDriverintersect" "melanomaOG" ...
-    "melanomaTSG" "melanomaDriver" "melanomaOGintersect"...
-    "melanomaTSGintersect" "melanomaDriverintersect"...
+    "colonTSGintersect" "colonDriverintersect" "colonDriverNonintersect" ... 
+    "melanomaOG" "melanomaTSG" "melanomaDriver" "melanomaOGintersect"...
+    "melanomaTSGintersect" "melanomaDriverintersect" "melanomaDriverNonintersect"...
     "pancreaOG" "pancreaTSG" "pancreaDriver" "pancreaOGintersect" ...
-    "pancreaTSGintersect" "pancreaDriverintersect"...
+    "pancreaTSGintersect" "pancreaDriverintersect" "pancreaDriverNonintersect"...
     "breastOG" "breastTSG" "breastDriver" "breastOGintersect" ...
-    "breastTSGintersect" "breastDriverintersect"];
+    "breastTSGintersect" "breastDriverintersect" "breastDriverNonintersect"];
 
 
 allGeneNames = strings(2000,length(names));
 
 for i = 1:length(names)
-    if ismember(i,[1:6])
+    if ismember(i,[1:7])
         current = eval(names(i));
-    elseif ismember(i,[7:12])
+    elseif ismember(i,[8:14])
         current = eval(names(i));
-    elseif ismember(i,[13:18])
+    elseif ismember(i,[15:21])
         current = eval(names(i));
     else
         current = eval(names(i));
@@ -192,9 +178,9 @@ end
 
 %export to excel
 filename = 'allPredictedGeneNames2.xlsx';
-xlswrite(filename,allGeneNames(:,1:6),'Colon');
-xlswrite(filename,allGeneNames(:,7:12),'Melanoma');
-xlswrite(filename,allGeneNames(:,13:18),'Pancrea');
-xlswrite(filename,allGeneNames(:,19:24),'Breast');
+xlswrite(filename,allGeneNames(:,1:7),'Colon');
+xlswrite(filename,allGeneNames(:,8:14),'Melanoma');
+xlswrite(filename,allGeneNames(:,15:21),'Pancrea');
+xlswrite(filename,allGeneNames(:,22:28),'Breast');
 
 end

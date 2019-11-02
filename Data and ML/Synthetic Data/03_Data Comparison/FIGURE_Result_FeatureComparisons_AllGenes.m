@@ -8,13 +8,13 @@ function FIGURE_Result_FeatureComparisons_AllGenes(ConsensusX,SyntheticX)
 close all
 clc
 % categories =({'Silent Fraction' 'Nonsense Fraction' 'Missense Fraction' ...
-%     'Nonsense to Missense Ratio' 'Missense to Silent Ratio' 'Nonsilent to Silent Ratio'...
-%     'Sample Count Fraction' 'Missense Entropy' 'Mutation Entropy'...
-%     'Missense p-value' 'Nonsense p-value' 'Silent p-value'});
-categories = {'Missense Fraction', 'Missense to Silent Ratio', 'Mutation Entropy', 'Silent P-value'};
-
+%      'Nonsense to Missense Ratio' 'Missense to Silent Ratio' 'Nonsilent to Silent Ratio'...
+%      'Sample Count Fraction' 'Missense Entropy' 'Mutation Entropy'...
+%      'Missense p-value' 'Nonsense p-value' 'Silent p-value'});
+categories = {'Missense Fraction', 'Missense to Silent Ratio', 'Mutation Entropy', 'Silent Default Probability'};
+categoryIdx = [3, 5, 9, 12];
 %%%% PLOTTING
-for i = 1:2:length(categories)
+for i = 1:2:length(categoryIdx)
     %%%%% Figure Properties
     fig_height = 7.5;
     fig_width = 4;
@@ -55,6 +55,7 @@ for i = 1:2:length(categories)
 
     [f1,xi1] = ksdensity(A1(isfinite(A1)),'Bandwidth',bw1*1.5);
     [f2,xi2] = ksdensity(B1(isfinite(B1)),'Bandwidth',bw2*1.5);
+    p = kstest2(f1, f2)
         
     XLim1 = get(ax1,'XLim');
     XLim1 = XLim1 + [min([A1;B1]) max([A1;B1])] * 0.01 * diff(XLim1);
@@ -68,12 +69,14 @@ for i = 1:2:length(categories)
     
     [f21,xi21,~] = ksdensity(A2(isfinite(A2)),'Bandwidth',bw3*1.5);
     [f22,xi22,~] = ksdensity(B2(isfinite(B2)),'Bandwidth',bw4*1.5); 
+    p = kstest2(f21, f22)
+
     
     XLim2 = get(ax2,'XLim');
     XLim2 = XLim2 + [min([A2;B2]) max([A2;B2])] * 0.01 * diff(XLim2);
     plot(xi21,f21,xi22,f22,'LineWidth',2,'Parent',ax2);
     %lgd2 = legend(ax2,{'synthetic', 'consensus'},'Box','off');
-    xlab2 = xlabel([categories(i)],'Parent',ax2);
+    xlab2 = xlabel([categories(i+1)],'Parent',ax2);
     ylab2 = ylabel('Estimated $$ f(x) $$','Parent',ax2,'Interpreter','latex');
     
     %if i == 9 || i == 10 %these two have unusual data ranges; rearrange
@@ -91,6 +94,7 @@ for i = 1:2:length(categories)
     set(ax1,'FontName','Times New Roman','FontSize',8), set([xlab1,ylab1],'Fontsize',10);
     t_ax1 = text(0.5, 1,[categories{i}],'Units','Normalized','FontName','Times New Roman',...
         'FontSize',14,'Parent',ax1,'HorizontalAlignment','Center','VerticalAlignment','bottom','FontWeight','bold');
+    lgd2 = legend(ax1,{'Synthetic', 'In-vivo'},'Box','off', 'Fontsize',10);
 
    
     set(ax2,'FontName','Times New Roman','FontSize',8), set([xlab2,ylab2],'Fontsize',10);
@@ -98,7 +102,7 @@ for i = 1:2:length(categories)
         'FontSize',14,'Parent',ax2,'HorizontalAlignment','Center','VerticalAlignment','bottom','FontWeight','bold');
 
     
-    % export_fig (sprintf('%d_%s and %d_%s',i,categories{i},i+1,categories{i+1}),'-r300',  '-png');
-    
+     export_fig (sprintf('%d_%s and %d_%s',i,categories{i},i+1,categories{i+1}),'-r300',  '-png');
+%     
 end
 end
