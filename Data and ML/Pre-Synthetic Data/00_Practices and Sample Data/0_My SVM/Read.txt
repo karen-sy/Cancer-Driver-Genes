@@ -1,4 +1,0 @@
-TO_DO
-
-Clean up variables (alpha(i) --> alph1,a1....)
-Read about case where eta NOT negative
